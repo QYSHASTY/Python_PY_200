@@ -9,6 +9,10 @@ class Glass:
         self.occupied_volume = None
         self.init_occupied_volume(occupied_volume)
 
+        self.add_water = None
+        self.init_add_water(add_water)
+
+
     def init_capacity_volume(self, capacity_volume: [int, float]):
         if not isinstance(capacity_volume, (int, float)):
             raise TypeError
@@ -25,7 +29,7 @@ class Glass:
 
 # создать метод, который будет инициализировать атрибут capacity_volume
 
-    def add_water(self, add_water: Union[int, float]):
+    def init_add_water(self, add_water: Union[int, float]):
         if not isinstance(add_water, (int, float)):
             raise TypeError
         if not add_water > (self.capacity_volume - self.occupied_volume):
@@ -34,7 +38,7 @@ class Glass:
 
 
 if __name__ == "__main__":
-    glass = Glass(200, 100)  # экземпляр класса
+    glass = Glass(200, 100,)  # экземпляр класса
+    init_add_water(150)
     print(glass.capacity_volume, glass.occupied_volume)
-    p = glass.add_water(150)
-    print(p)
+
