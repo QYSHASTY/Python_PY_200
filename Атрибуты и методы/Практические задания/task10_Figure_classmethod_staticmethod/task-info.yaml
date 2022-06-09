@@ -1,5 +1,8 @@
 type: theory
 files:
+- name: __init__.py
+  visible: false
+  learner_created: false
 - name: main.py
   visible: true
   text: |
@@ -35,9 +38,8 @@ files:
         TriangleCalculator.area()  # Работаем через класс
         TriangleCalculator.area_by_height(5, 10)  # Работаем через класс
   learner_created: false
-- name: __init__.py
-  visible: false
-  learner_created: false
-status: Unchecked
+status: Solved
+feedback:
+  time: Thu, 09 Jun 2022 15:28:27 UTC
 record: -1
 post_submission_on_open: true
