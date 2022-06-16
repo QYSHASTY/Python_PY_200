@@ -32,4 +32,77 @@ class Node:
         self.is_valid(next_)
         self._next = next_
 
-# TODO реализовать класс DoubleLinkedNode
+
+class DoubleLinkedNode(Node):
+
+    def __init__(self, value=None, next_=None, prev_=None):
+
+        """
+        Создаем новый узел для односвязного списка
+        :param value: Любое значение, которое помещено в узел
+        :param next_: следующий узел, если он есть
+        :param prev_: предыдущий узел, если он есть
+        """
+
+        super().__init__(value, next_)
+        self.prev = prev_
+
+    @property
+    def prev(self):
+        return self._prev
+
+    @prev.setter
+    def prev(self, prev_: Optional["DoubleLinkedNode"] = None):
+        self.is_valid(prev_)
+        self._prev = prev_
+
+    def __repr__(self):
+        next_repr: str = str(None) \
+            if self.next is None \
+            else f"DoubleLinkedNode({self.next.value}, {None}, {None}"
+        prev_repr: str = str(None) \
+            if self.prev is None \
+            else f"DoubleLinkedNode({self.prev.value}, {None}, {None}"
+        return f"DoubleLinkedNode({self.value}, {next_repr}, {prev_repr}"
+
+    # def __str__(self) -> str:
+    #     super().__str__()
+
+    # def is_valid(self, node: Any) -> None:
+    #     if not isinstance(node, (type(None), Node)):
+    #         raise TypeError
+    #
+    # @property
+    # def next(self):
+    #     return self._next
+    #
+    # @next.setter
+    # def next(self, next_: Optional["Node"]):
+    #     self.is_valid(next_)
+    #     self._next = next_
+
+
+
+if __name__ == "__main__":
+
+    first_node = DoubleLinkedNode(1)
+    second_node = DoubleLinkedNode(2)
+    third_node = DoubleLinkedNode(3)
+    fourth_node = DoubleLinkedNode(4)
+
+    first_node.next = second_node
+
+
+    second_node.next = third_node
+    second_node.prev = first_node
+
+    third_node.next = fourth_node
+    third_node.prev = second_node
+
+    fourth_node.prev = third_node
+
+
+    print(repr(first_node))
+    print(repr(second_node))
+    print(repr(third_node))
+    print(repr(fourth_node))

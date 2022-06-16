@@ -15,13 +15,13 @@ class RectangleFoot(Rectangle):
 
     def area(self):
         """ Переводим площадь в футы. """
-        area = ...  # TODO вызываем метод area базового класса
+        area = super().area()  # вызываем метод area базового класса
         return area / (self.FOOT_IN_METERS ** 2)
 
 
 if __name__ == "__main__":
     rect = Rectangle(5, 10)
-    print(rect.area())
+    print(rect.area(), "метры")
 
     rect_foot = RectangleFoot(5, 10)
-    print(rect_foot.area())
+    print(rect_foot.area(), "футы")

@@ -4,7 +4,7 @@ from node import Node
 
 
 class LinkedList:
-    def __init__(self, data: Iterable = None):
+    def __init__(self, data: Iterable = None):  # stay
         """Конструктор связного списка"""
         self.len = 0
         self.head: Optional[Node] = None
@@ -14,9 +14,9 @@ class LinkedList:
             for value in data:
                 self.append(value)
 
-    def append(self, value: Any):
+    def append(self, value: Any):  # reload
         """ Добавление элемента в конец связного списка. """
-        append_node = Node(value)
+        append_node = Node(value)  # dll(value)
 
         if self.head is None:
             self.head = self.tail = append_node
@@ -26,7 +26,7 @@ class LinkedList:
 
         self.len += 1
 
-    def step_by_step_on_nodes(self, index: int) -> Node:
+    def step_by_step_on_nodes(self, index: int) -> Node:  # stay
         """ Функция выполняет перемещение по узлам до указанного индекса. И возвращает узел. """
         if not isinstance(index, int):
             raise TypeError()
@@ -40,7 +40,7 @@ class LinkedList:
 
         return current_node
 
-    @staticmethod
+    @staticmethod  # reload
     def linked_nodes(left_node: Node, right_node: Optional[Node] = None) -> None:
         """
         Функция, которая связывает между собой два узла.
@@ -49,6 +49,9 @@ class LinkedList:
         :param right_node: Правый или следующий узел
         """
         left_node.next = right_node
+
+
+#  ниже все наследуется
 
     def __getitem__(self, index: int) -> Any:
         """ Метод возвращает значение узла по указанному индексу. """
