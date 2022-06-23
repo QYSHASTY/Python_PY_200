@@ -71,9 +71,16 @@ class LinkedList:
         return f"{self.to_list()}"
 
     def nodes_iterator(self) -> Iterator[Node]:
-        ...  # TODO функция-генератор для перебора всех узлов
+        current_node = self.head  # функция-генератор для перебора всех узлов
+        for _ in range(self.len):
+            yield current_node
+            current_node = current_node.next
 
-    # TODO определить метод __contains__
+    # определить метод __contains__
+
+    def __contains__(self, item):
+        print("Вызван метод \"__contains__\"")
+        return any(node.value == item for node in self.nodes_iterator())
 
 
 if __name__ == '__main__':
