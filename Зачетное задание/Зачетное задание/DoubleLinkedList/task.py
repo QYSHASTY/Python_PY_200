@@ -8,35 +8,26 @@ from node import Node
 class LinkedList(MutableSequence):
 
 
-
-    def __init__(self, data: Iterable = None):
+    def __init__(self):
         """Конструктор связного списка"""
-        self.len = 0
-        self.head: Optional[Node] = None
-        self.tail = self.head
+        super().__init__()
 
-        if data is not None:
-            for value in data:
-                self.append(value)
-
-    def __getitem__(self, index: int) -> Any:
+    def __getitem__(self, index: int):
         """ Метод возвращает значение узла по указанному индексу. """
-        print("Вызван метод \"__getitem__\"")
-        node = self.step_by_step_on_nodes(index)
-        return node.value
+        super().__getitem__()
 
-    def __setitem__(self, index: int, value: Any) -> None:
+    def __setitem__(self, index: int, value: Any):
         """ Метод устанавливает значение узла по указанному индексу. """
-        node = self.step_by_step_on_nodes(index)
-        node.value = value
+        super().__setitem__()
 
     def __delitem__(self, index: int):
+        super().__delitem__()
         if not 0 <= index < self.len:  # проверка индекса
             raise IndexError
 
     def __len__(self) -> int:
         """ Метод возвращает длину последовательности. """
-        print("Вызван метод \"__len__\"")
+        super().__len__()
         return self.len
 
     def __str__(self) -> str:
@@ -47,37 +38,14 @@ class LinkedList(MutableSequence):
 
 
     def insert(self, index: int, value: Any) -> None:
+        super().insert()
         if not isinstance(index, int):
             raise TypeError()
 
-        insert_node = Node(value)
-
-        if index == 0:
-            insert_node.next = self.head
-            self.head = insert_node
-            self.len += 1
-        elif index >= self.len - 1:
-            self.append(value)
-        else:
-            prev_node = self.step_by_step_on_nodes(index - 1)
-            next_node = prev_node.next
-
-            self.linked_nodes(prev_node, insert_node)
-            self.linked_nodes(insert_node, next_node)
-
-            self.len += 1
 
     def append(self, value: Any):
         """ Добавление элемента в конец связного списка. """
-        append_node = Node(value)
-
-        if self.head is None:
-            self.head = self.tail = append_node
-        else:
-            self.linked_nodes(self.tail, append_node)
-            self.tail = append_node
-
-        self.len += 1
+        super().append()
 
     def step_by_step_on_nodes(self, index: int) -> Node:
         """ Функция выполняет перемещение по узлам до указанного индекса. И возвращает узел. """
@@ -120,7 +88,5 @@ class DoubleLinkedList(LinkedList):
 
 
 if __name__ == "__main__":
-    list_ = [1, 2, 3]
-    linked_list = LinkedList(list_)
-    print(linked_list)
+
 
